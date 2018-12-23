@@ -1,4 +1,7 @@
-language: "en"
-
-pipeline: spacy_sklearn
-
+language: "kr"
+pipeline:
+- name: "component.KoreanTokenizer"
+- name: "ner_crf"
+- name: "ner_synonyms"
+- name: "intent_featurizer_count_vectors"
+- name: "intent_classifier_tensorflow_embedding"

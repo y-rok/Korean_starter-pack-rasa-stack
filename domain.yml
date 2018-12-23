@@ -26,14 +26,14 @@ actions:
 
 templates:
   utter_name:
-  - text: "Hey there! Tell me your name."
+  - text: "안녕하세요. 이름이 뭐에요?"
 
   utter_greet:
-  - text: "Nice to you meet you {name}. How can I help?"
+  - text: "{name}님 반갑습니다. 무슨일이세요?"
 
   utter_goodbye:
-  - text: "Talk to you later!"
+  - text: "다음에 또 얘기해요~!"
   
   utter_thanks:
-  - text: "My pleasure."
+  - text: "감사합니다^^"
   

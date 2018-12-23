@@ -1,91 +1,76 @@
-<!--- Make sure to update this training data file with more training examples from https://forum.rasa.com/t/rasa-starter-pack/704 --> 
-
-## intent:goodbye <!--- The label of the intent --> 
-- Bye 			<!--- Training examples for intent 'bye'--> 
-- Goodbye
-- See you later
-- Bye bot
-- Goodbye friend
-- bye
-- bye for now
-- catch you later
-- gotta go
-- See you
-- goodnight
-- have a nice day
-- i'm off
-- see you later alligator
-- we'll speak soon
+## intent:goodbye 
+- 잘가
+- 끝
+- 빠이
+- 굿바이
+- 바이
+- 종료
+- 나중에 또 얘기해
+- 좋은 시간이었어
+- 다음에 또 봐
+- 갈게
+- 갈게요
+- ㅂㅂ
+- 또 봅시다
 
 ## intent:greet
-- Hi
-- Hey
-- Hi bot
-- Hey bot
-- Hello
-- Good morning
-- hi again
-- hi folks
-- hi Mister
-- hi pal!
-- hi there
-- greetings
-- hello everybody
-- hello is anybody there
-- hello robot
+- 안녕
+- 헤이
+- 안녕하세요
+- 저기요
+- 또 왔어
+- 시작
+- 헬로우
+- 하이
+- ㅎㅇ
+- 처음 뵙곘습니다
+- 방가
+- 반가워
+- 반갑습니다
 
 ## intent:thanks
-- Thanks
-- Thank you
-- Thank you so much
-- Thanks bot
-- Thanks for that
-- cheers
-- cheers bro
-- ok thanks!
-- perfect thank you
-- thanks a bunch for everything
-- thanks for the help
-- thanks a lot
-- amazing, thanks
-- cool, thanks
-- cool thank you
+- 떙큐
+- 감사
+- ㄱㅅ
+- 고맙습니다
+- 고마워
+- 감사합니다
+- 감사여
+- 감사용
+- 좋아
+- 굿
+- 썡유
+- 고맙
+- 고마웠어
 
-## intent:affirm
-- yes
-- yes sure
-- absolutely
-- for sure
-- yes yes yes
-- definitely
 
 
 ## intent:name
-- My name is [Juste](name)  <!--- Square brackets contain the value of entity while the text in parentheses is a a label of the entity --> 
-- I am [Josh](name)
-- I'm [Lucy](name)
-- People call me [Greg](name)
-- It's [David](name)
-- Usually people call me [Amy](name)
-- My name is [John](name)
-- You can call me [Sam](name)
-- Please call me [Linda](name)
-- Name name is [Tom](name)
-- I am [Richard](name)
-- I'm [Tracy](name)
-- Call me [Sally](name)
-- I am [Philipp](name)
-- I am [Charlie](name)
+- [철수](name) 입니다
+- [영희](name) 에요
+- 나는 [영록](name)
+- 저는 [민호](name) 입니다
+- 내 이름은 [지홍](name) 야
+- 제 이름은 [동현](name) 입니다
+- 저는 [재민](name) 에요
+- 난 [민철](name)
+- 나 [종호](name)
+- 저 [슬기](name)
+- 이름 [재훈](name)
+
 
 
 ## intent:joke
-- Can you tell me a joke?
-- I would like to hear a joke
-- Tell me a joke
-- A joke please
-- Tell me a joke please
-- I would like to hear a joke
-- I would loke to hear a joke, please
-- Can you tell jokes?
-- Please tell me a joke
-- I need to hear a joke
+- 재밌는 얘기 좀 해줘
+- 재밌는 거 알려줘
+- 웃기는 얘기
+- 재밌는 놈당 있어?
+- 웃긴 얘기 있어?
+- 심심해
+- 농담 하나 해봐
+- 웃긴 얘기 해봐
+- 농담
+- 뭐 재밌는 거 있어?
+- 나 좀 웃겨줘
+- 웃긴 얘기 좀
+
