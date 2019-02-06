@@ -53,9 +53,9 @@ class KoreanTokenizer(Tokenizer, Component):
         running_offset = 0
         result = []
         for token in token_list:
-            toekn_offset = running_offset
+            token_offset = text.index(token, running_offset)
             token_len = len(token)
-            running_offset = toekn_offset + token_len
-            result.append(Token(token, toekn_offset))
+            running_offset = token_offset + token_len
+            result.append(Token(token, token_offset))
 
         return result
