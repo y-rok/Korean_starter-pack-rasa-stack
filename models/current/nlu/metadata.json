@@ -2,8 +2,6 @@
     "language": "kr",
     "pipeline": [
         {
-            "norm": false,
-            "stem": false,
             "name": "component.KoreanTokenizer",
             "class": "component.korean_tokenizer.KoreanTokenizer"
         },
@@ -94,6 +92,6 @@
         }
     ],
     "training_data": "training_data.json",
-    "trained_at": "20190206-182500",
+    "trained_at": "20190206-202200",
     "rasa_nlu_version": "0.13.8"
 }

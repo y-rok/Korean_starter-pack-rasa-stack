@@ -6,7 +6,8 @@
 
 import re
 
-from konlpy.tag import Okt
+# from konlpy.tag import Okt
+from konlpy.tag import Mecab
 
 from rasa_nlu.components import Component
 from rasa_nlu.tokenizers import Tokenizer, Token
@@ -17,21 +18,29 @@ class KoreanTokenizer(Tokenizer, Component):
 
     provides = ["tokens"]
 
-    defaults = {
-        # If True, token normalization
-        "norm":False,
-        # If Ture, token stemming
-        "stem":False
-    }
+    '''
+    okt implementation
+    '''
+    # defaults = {
+    #     # If True, token normalization
+    #     "norm":False,
+    #     # If Ture, token stemming
+    #     "stem":False
+    # }
 
     def __init__(self, component_config=None):
 
         super(KoreanTokenizer, self).__init__(component_config)
 
-        self.okt=Okt()
+        self.mecab=Mecab()
+
+        '''
+        okt implementation
+        '''
+        # self.okt=Okt()
         # Load configuration
-        self.norm= self.component_config['norm']
-        self.stem = self.component_config['stem']
+        # self.norm= self.component_config['norm']
+        # self.stem = self.component_config['stem']
 
 
     def train(self, training_data, config, **kwargs):
@@ -48,7 +57,7 @@ class KoreanTokenizer(Tokenizer, Component):
     def tokenize(self, text):
         # type: (Text) -> List[Token]
 
-        token_list=self.okt.morphs(text,self.norm,self.stem)
+        token_list=self.mecab.morphs(text)
 
         running_offset = 0
         result = []
