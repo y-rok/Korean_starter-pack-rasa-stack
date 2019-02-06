@@ -5,19 +5,19 @@
         "name"
       ]
     },
-    "utter_joke": {
+    "utter_greet": {
       "slots": []
     },
     "utter_goodbye": {
       "slots": []
     },
-    "utter_thanks": {
-      "slots": []
-    },
     "utter_name": {
       "slots": []
     },
-    "utter_greet": {
+    "utter_joke": {
+      "slots": []
+    },
+    "utter_thanks": {
       "slots": []
     }
   },
@@ -25,12 +25,14 @@
   "python": "3.6.7",
   "max_histories": [
     3,
-    3
+    3,
+    null
   ],
   "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
   "policy_names": [
     "rasa_core.policies.keras_policy.KerasPolicy",
-    "rasa_core.policies.memoization.MemoizationPolicy"
+    "rasa_core.policies.memoization.MemoizationPolicy",
+    "rasa_core.policies.fallback.FallbackPolicy"
   ],
-  "trained_at": "20190206-171013"
+  "trained_at": "20190206-205353"
 }

@@ -8,4 +8,5 @@ pipeline:
 - name: "ner_crf"
 - name: "ner_synonyms"
 - name: "intent_featurizer_count_vectors"
+  "token_pattern": '(?u)\b\w+\b' # 1개의 character도 인식하도록 regex 변경
 - name: "intent_classifier_tensorflow_embedding"

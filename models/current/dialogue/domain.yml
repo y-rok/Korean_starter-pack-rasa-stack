@@ -6,6 +6,7 @@ actions:
 - utter_greet
 - utter_goodbye
 - utter_joke
+- utter_fallback
 config:
   store_entities_as_slots: true
 entities:
@@ -30,6 +31,8 @@ slots:
     initial_value: null
     type: rasa_core.slots.TextSlot
 templates:
+  utter_fallback:
+  - text: 무슨 뜻인지 모르겠어요...ㅠㅠ
   utter_goodbye:
   - text: 다음에 또 얘기해요~!
   utter_greet:

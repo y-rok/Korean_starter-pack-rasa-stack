@@ -1,0 +1,92 @@
+{
+    "intent_errors": [
+        {
+            "text": "잘가",
+            "intent": "goodbye",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "끝",
+            "intent": "goodbye",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "ㅂㅂ",
+            "intent": "goodbye",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "또 왔어",
+            "intent": "greet",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "ㅎㅇ",
+            "intent": "greet",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "ㄱㅅ",
+            "intent": "thanks",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "좋아",
+            "intent": "thanks",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "굿",
+            "intent": "thanks",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "난 민철",
+            "intent": "name",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "나 종호",
+            "intent": "name",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        },
+        {
+            "text": "민수",
+            "intent": "name",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            }
+        }
+    ]
+}

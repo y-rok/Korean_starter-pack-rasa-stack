@@ -306,18 +306,6 @@
         "text": "민수"
       },
       {
-        "intent": "name",
-        "entities": [
-          {
-            "start": 0,
-            "end": 3,
-            "value": "김재석",
-            "entity": "name"
-          }
-        ],
-        "text": "김재석"
-      },
-      {
         "intent": "joke",
         "text": "재밌는 얘기 좀 해줘"
       },

@@ -16,6 +16,7 @@
     "prev_utter_thanks",
     "prev_utter_greet",
     "prev_utter_goodbye",
-    "prev_utter_joke"
+    "prev_utter_joke",
+    "prev_utter_fallback"
   ]
 }

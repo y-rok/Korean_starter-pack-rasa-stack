@@ -22,6 +22,7 @@ actions:
 - utter_greet
 - utter_goodbye
 - utter_joke
+- utter_fallback
 
 
 templates:
@@ -43,4 +44,7 @@ templates:
   - text: "총이 움직이면!!!??? 이동건~~"
   - text: "고추가 웃으면? 풋고추...ㅎㅎㅎㅎ"
   - text: "세상에서 가장 착한 사자가 뭔지알아요? 자원봉사자!"
+
+  utter_fallback:
+  - text: "무슨 뜻인지 모르겠어요...ㅠㅠ"
   

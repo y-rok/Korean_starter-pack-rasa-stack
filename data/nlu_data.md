@@ -56,6 +56,8 @@
 - 나 [종호](name)
 - 저 [슬기](name)
 - 이름 [재훈](name)
+- [민수](name)
+- [김재석](name)
 
 ## intent:joke
 - 재밌는 얘기 좀 해줘
