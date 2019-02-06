@@ -21,7 +21,7 @@ actions:
 - utter_thanks
 - utter_greet
 - utter_goodbye
-- action_joke
+- utter_joke
 
 
 templates:
@@ -36,4 +36,11 @@ templates:
   
   utter_thanks:
   - text: "감사합니다^^"
+
+  utter_joke:
+  - text: "설탕이 깜짝 놀라면!!! 이럴 슈가~~~"
+  - text: "아마존에 사람이 누굴까요? 아마... John?"
+  - text: "총이 움직이면!!!??? 이동건~~"
+  - text: "고추가 웃으면? 풋고추...ㅎㅎㅎㅎ"
+  - text: "세상에서 가장 착한 사자가 뭔지알아요? 자원봉사자!"
   

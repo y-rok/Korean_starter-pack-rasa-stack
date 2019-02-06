@@ -3,6 +3,10 @@
     "common_examples": [
       {
         "intent": "goodbye",
+        "text": "나중에 또 얘기햌ㅋㅋ"
+      },
+      {
+        "intent": "goodbye",
         "text": "잘가"
       },
       {
@@ -173,18 +177,6 @@
         "intent": "name",
         "entities": [
           {
-            "start": 0,
-            "end": 2,
-            "value": "영희",
-            "entity": "name"
-          }
-        ],
-        "text": "영희 에요"
-      },
-      {
-        "intent": "name",
-        "entities": [
-          {
             "start": 3,
             "end": 5,
             "value": "영록",
@@ -192,6 +184,18 @@
           }
         ],
         "text": "나는 영록"
+      },
+      {
+        "intent": "name",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "value": "영희",
+            "entity": "name"
+          }
+        ],
+        "text": "영희 에요"
       },
       {
         "intent": "name",

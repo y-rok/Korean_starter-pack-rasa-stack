@@ -2,7 +2,9 @@
     "language": "kr",
     "pipeline": [
         {
-            "name": "tokenizer_whitespace",
+            "norm": true,
+            "stem": true,
+            "name": "component.KoreanTokenizer",
             "class": "component.korean_tokenizer.KoreanTokenizer"
         },
         {
@@ -57,7 +59,6 @@
             "OOV_token": null,
             "OOV_words": [],
             "name": "intent_featurizer_count_vectors",
-            "analyzer": "char",
             "featurizer_file": "intent_featurizer_count_vectors.pkl",
             "class": "rasa_nlu.featurizers.count_vectors_featurizer.CountVectorsFeaturizer"
         },
@@ -93,6 +94,6 @@
         }
     ],
     "training_data": "training_data.json",
-    "trained_at": "20181223-154339",
+    "trained_at": "20190206-173828",
     "rasa_nlu_version": "0.13.8"
 }

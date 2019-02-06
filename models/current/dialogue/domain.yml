@@ -1,0 +1,46 @@
+%YAML 1.1
+---
+actions:
+- utter_name
+- utter_thanks
+- utter_greet
+- utter_goodbye
+- utter_joke
+config:
+  store_entities_as_slots: true
+entities:
+- name
+forms: []
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- thanks:
+    use_entities: true
+- deny:
+    use_entities: true
+- joke:
+    use_entities: true
+- name:
+    use_entities: true
+slots:
+  name:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+templates:
+  utter_goodbye:
+  - text: 다음에 또 얘기해요~!
+  utter_greet:
+  - text: '{name}님 반갑습니다. 무슨일이세요?'
+  utter_joke:
+  - text: 설탕이 깜짝 놀라면!!! 이럴 슈가~~~
+  - text: 아마존에 사람이 누굴까요? 아마... John?
+  - text: 총이 움직이면!!!??? 이동건~~
+  - text: 고추가 웃으면? 풋고추...ㅎㅎㅎㅎ
+  - text: 세상에서 가장 착한 사자가 뭔지알아요? 자원봉사자!
+  utter_name:
+  - text: 안녕하세요. 이름이 뭐에요?
+  utter_thanks:
+  - text: 감사합니다^^

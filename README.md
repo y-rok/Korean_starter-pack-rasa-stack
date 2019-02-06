@@ -39,9 +39,9 @@ Mecab 설치
    - 설치에 다음 경로 활용 -> https://bitbucket.org/eunjeon/
 
 ```
->>> git clone https://bitbucket.org/eunjeon/mecab-python-0.996.git 
->>> cd mecab-python-0.996
->>> python setup.py build
->>> python setup.py install
+git clone https://bitbucket.org/eunjeon/mecab-python-0.996.git 
+cd mecab-python-0.996
+python setup.py build
+python setup.py install
 ```
 

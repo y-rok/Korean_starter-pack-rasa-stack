@@ -17,7 +17,7 @@
 
 ## story_joke_01
 * joke
- - action_joke
+ - utter_joke
  
 ## story_joke_02
 * greet
@@ -25,7 +25,7 @@
 * name{"name":"민호"} 
  - utter_greet
 * joke
- - action_joke
+ - utter_joke
 * thanks
  - utter_thanks
 * goodbye

@@ -1,6 +1,10 @@
 language: "kr"
 pipeline:
+
+#- name: "tokenizer_whitespace"
 - name: "component.KoreanTokenizer"
+  "norm": false
+  "stem": false
 - name: "ner_crf"
 - name: "ner_synonyms"
 - name: "intent_featurizer_count_vectors"
