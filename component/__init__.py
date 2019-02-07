@@ -1,1 +1,2 @@
 from .korean_tokenizer import KoreanTokenizer
+from .korean_ner_crf import KoreanExtractor
