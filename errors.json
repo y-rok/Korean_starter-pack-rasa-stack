@@ -1,91 +1,155 @@
 {
     "intent_errors": [
         {
-            "text": "잘가",
-            "intent": "goodbye",
+            "text": "나는 영현",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.8601739406585693,
+                "name": "joke"
             }
         },
         {
-            "text": "끝",
-            "intent": "goodbye",
+            "text": "내 이름 박상록 이야",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.5919345021247864,
+                "name": "goodbye"
             }
         },
         {
-            "text": "ㅂㅂ",
-            "intent": "goodbye",
+            "text": "다니엘",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.0,
+                "name": ""
             }
         },
         {
-            "text": "또 왔어",
-            "intent": "greet",
+            "text": "난 설리라고 해",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.7560213208198547,
+                "name": "joke"
             }
         },
         {
-            "text": "ㅎㅇ",
-            "intent": "greet",
+            "text": "건영",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.0,
+                "name": ""
             }
         },
         {
-            "text": "ㄱㅅ",
-            "intent": "thanks",
+            "text": "김건영",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.0,
+                "name": ""
             }
         },
         {
-            "text": "좋아",
-            "intent": "thanks",
+            "text": "저는 사랑이라고 해요",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.5871783494949341,
+                "name": "blood_type"
             }
         },
         {
-            "text": "굿",
-            "intent": "thanks",
+            "text": "전 김사랑",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.0,
+                "name": ""
             }
         },
         {
-            "text": "난 민철",
-            "intent": "name",
+            "text": "이름 선홍",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.5057057738304138,
+                "name": "thanks"
             }
         },
         {
-            "text": "나 종호",
-            "intent": "name",
+            "text": "만주가 내 이름이야",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.7478464245796204,
+                "name": "goodbye"
             }
         },
         {
-            "text": "민수",
-            "intent": "name",
+            "text": "제 이름 현 이에요",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
+                "confidence": 0.7556381225585938,
+                "name": "goodbye"
+            }
+        },
+        {
+            "text": "이름은 평온이라고 해요",
+            "intent": "intro",
+            "intent_prediction": {
+                "confidence": 0.864659309387207,
+                "name": "goodbye"
+            }
+        },
+        {
+            "text": "나는 강제임스",
+            "intent": "intro",
+            "intent_prediction": {
+                "confidence": 0.8601739406585693,
+                "name": "joke"
+            }
+        },
+        {
+            "text": "제임스",
+            "intent": "intro",
+            "intent_prediction": {
+                "confidence": 0.0,
+                "name": ""
+            }
+        },
+        {
+            "text": "김동건",
+            "intent": "intro",
+            "intent_prediction": {
+                "confidence": 0.0,
+                "name": ""
+            }
+        },
+        {
+            "text": "이름은 또띠 라고해",
+            "intent": "intro",
+            "intent_prediction": {
+                "confidence": 0.7892065048217773,
+                "name": "goodbye"
+            }
+        },
+        {
+            "text": "링컨",
+            "intent": "intro",
+            "intent_prediction": {
+                "confidence": 0.0,
+                "name": ""
+            }
+        },
+        {
+            "text": "현진",
+            "intent": "intro",
+            "intent_prediction": {
+                "confidence": 0.0,
+                "name": ""
+            }
+        },
+        {
+            "text": "최광록",
+            "intent": "intro",
+            "intent_prediction": {
+                "confidence": 0.0,
+                "name": ""
             }
         }
     ]

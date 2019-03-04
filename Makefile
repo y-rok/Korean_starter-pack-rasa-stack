@@ -32,3 +32,12 @@ train-core:
 
 cmdline:
 	python -m rasa_core.run -d models/current/dialogue -u models/current/nlu
+
+train-eval:
+	python -m rasa_nlu.evaluate --data data/nlu_data.md --model models/current/nlu
+
+interactive_learning:
+	python -m rasa_core.train interactive -o models/current/dialogue -d domain.yml -s data/stories.md --nlu models/current/nlu --endpoints endpoints.yml
+
+debug:
+	python -m rasa_core.run -d models/current/dialogue -u models/current/nlu --endpoints endpoints.yml --enable_api --debug
