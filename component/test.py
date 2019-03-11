@@ -23,15 +23,16 @@ from rasa_nlu.training_data import TrainingData
 
 logger = logging.getLogger(__name__)
 
+if typing.TYPE_CHECKING:
+    import sklearn_crfsuite
 
-CRF_MODEL_FILE_NAME = "pre_trained_crf_model_BILOU.pkl"
+CRF_MODEL_FILE_NAME = "crf_model.pkl"
 
 mecab = Mecab()
 
 
-class PreTrainedCRF(EntityExtractor):
-
-    name = "component.PreTrainedCRF"
+class KoreanExtractor(EntityExtractor):
+    name = "component.KoreanExtractor"
 
     provides = ["entities"]
 
@@ -73,8 +74,8 @@ class PreTrainedCRF(EntityExtractor):
         'suffix3': lambda doc: doc[0][-3:],
         'suffix2': lambda doc: doc[0][-2:],
         'suffix1': lambda doc: doc[0][-1:],
-        # 'pos': lambda doc: doc[1],
-        # 'pos2': lambda doc: doc[1][:2],
+        #'pos': lambda doc: doc[1],
+        #'pos2': lambda doc: doc[1][:2],
         'bias': lambda doc: 'bias',
         'length': lambda doc: len(doc[0]),
         'kor_pos': lambda doc: mecab.pos(doc[0])[0][1],
@@ -84,57 +85,39 @@ class PreTrainedCRF(EntityExtractor):
     }
 
     def __init__(self, component_config=None, ent_tagger=None):
+        # type: (sklearn_crfsuite.CRF, Dict[Text, Any]) -> None
 
-        super(PreTrainedCRF, self).__init__(component_config)
-
-        self.mecab = Mecab()
-
-        self.pos_features = False
+        super(KoreanExtractor, self).__init__(component_config)
 
         self.ent_tagger = ent_tagger
 
-    def process(self, message: Message, **kwargs: Any) -> None:
+        self.pos_features = False
+
+        self.mecab = Mecab()
+
+    def process(self, message, **kwargs):
+        # type: (Message, **Any) -> None
+
+        self._check_spacy_doc(message)
 
         extracted = self.add_extractor_name(self.extract_entities(message))
         message.set("entities", message.get("entities", []) + extracted,
                     add_to_output=True)
 
-    @classmethod
-    def load(cls,
-             model_dir=None,  # type: Text
-             model_metadata=None,  # type: Metadata
-             cached_component=None,  # type: Optional[PreTrainedCRF]
-             **kwargs  # type: **Any
-             ):
-        # type: (...) -> PreTrainedCRF
-        from sklearn.externals import joblib
-
-        meta = model_metadata.for_component(cls.name)
-        file_name = meta.get("classifier_file", "pre_trained_crf_model.pkl")
-        model_file = os.path.join(model_dir, file_name)
-
-        if os.path.exists(model_file):
-            ent_tagger = joblib.load(model_file)
-
-            return cls(meta, ent_tagger)
-        else:
-            return cls(meta)
-
-    def extract_entities(self, message: Message) -> List[Dict[Text, Any]]:
+    def extract_entities(self, message):
+        # type: (Message) -> List[Dict[Text, Any]]
         """Take a sentence and return entities in json format"""
 
-        # if self.ent_tagger is not None:
-        text_data = self._from_text_to_crf(message)
-        features = self._sentence_to_features(text_data)
-        ents = self.ent_tagger.predict_marginals_single(features)
-        return self._from_crf_to_json(message, ents)
-        # else:
-        #     return []
+        if self.ent_tagger is not None:
+            text_data = self._from_text_to_crf(message)
+            features = self._sentence_to_features(text_data)
+            ents = self.ent_tagger.predict_marginals_single(features)
+            return self._from_crf_to_json(message, ents)
+        else:
+            return []
 
-    def _from_text_to_crf(self,
-                          message: Message,
-                          entities: List[Text] = None
-                          ) -> List[Tuple[Text, Text, Text, Text]]:
+    def _from_text_to_crf(self, message, entities=None):
+        # type: (Message, List[Text]) -> List[Tuple[Text, Text, Text, Text]]
         """Takes a sentence and switches it to crfsuite format."""
 
         crf_format = []
@@ -145,17 +128,31 @@ class PreTrainedCRF(EntityExtractor):
         for i, token in enumerate(tokens):
             pattern = self.__pattern_of_token(message, i)
             entity = entities[i] if entities else "N/A"
+            """korean_pos_tagging"""
             tag = mecab.pos(token.text)[0][1]
             # tag = self.__tag_of_token(token) if self.pos_features else None
             crf_format.append((token.text, tag, entity, pattern))
         return crf_format
 
-    @staticmethod
-    def __pattern_of_token(message, i):
-        if message.get("tokens") is not None:
-            return message.get("tokens")[i].get("pattern", {})
+    def _from_crf_to_json(self, message, entities):
+        # type: (Message, List[Any]) -> List[Dict[Text, Any]]
+
+        # if self.pos_features:
+        #     tokens = message.get("spacy_doc")
+        # else:
+        tokens = message.get("tokens")
+
+        if len(tokens) != len(entities):
+            raise Exception('Inconsistency in amount of tokens '
+                            'between crfsuite and message')
+
+        if self.component_config["BILOU_flag"]:
+            return self._convert_bilou_tagging_to_entity_result(
+                tokens, entities)
         else:
-            return {}
+            # not using BILOU tagging scheme, multi-word entities are split.
+            return self._convert_simple_tagging_to_entity_result(
+                tokens, entities)
 
     def _sentence_to_features(self, sentence):
         # type: (List[Tuple[Text, Text, Text, Text]]) -> List[Dict[Text, Any]]
@@ -198,83 +195,23 @@ class PreTrainedCRF(EntityExtractor):
             sentence_features.append(word_features)
         return sentence_features
 
-    def _from_crf_to_json(self, message, entities):
-        # type: (Message, List[Any]) -> List[Dict[Text, Any]]
+    @classmethod
+    def load(cls,
+             model_dir=None,  # type: Text
+             model_metadata=None,  # type: Metadata
+             cached_component=None,  # type: Optional[CRFEntityExtractor]
+             **kwargs  # type: **Any
+             ):
+        # type: (...) -> CRFEntityExtractor
+        from sklearn.externals import joblib
 
-        if self.pos_features:
-            tokens = message.get("spacy_doc")
+        meta = model_metadata.for_component(cls.name)
+        file_name = meta.get("classifier_file", CRF_MODEL_FILE_NAME)
+        model_file = os.path.join(model_dir, file_name)
+
+        if os.path.exists(model_file):
+            custom_ent_tagger = joblib.load(model_file)
+            return cls(meta, custom_ent_tagger)
         else:
-            tokens = message.get("tokens")
-
-        if len(tokens) != len(entities):
-            raise Exception('Inconsistency in amount of tokens '
-                            'between crfsuite and message')
-
-        if self.component_config["BILOU_flag"]:
-            return self._convert_bilou_tagging_to_entity_result(
-                tokens, entities)
-        else:
-            # not using BILOU tagging scheme, multi-word entities are split.
-            return self._convert_simple_tagging_to_entity_result(
-                tokens, entities)
-
-    def _convert_simple_tagging_to_entity_result(self, tokens, entities):
-        json_ents = []
-
-        for word_idx in range(len(tokens)):
-            entity_label, confidence = self.most_likely_entity(
-                    word_idx, entities)
-            word = tokens[word_idx]
-            if entity_label != 'O':
-                if self.pos_features:
-                    start = word.idx
-                    end = word.idx + len(word)
-                else:
-                    start = word.offset
-                    end = word.end
-                ent = {'start': start,
-                       'end': end,
-                       'value': word.text,
-                       'entity': entity_label,
-                       'confidence': confidence}
-                json_ents.append(ent)
-
-        return json_ents
-
-    def most_likely_entity(self, idx, entities):
-        if len(entities) > idx:
-            entity_probs = entities[idx]
-        else:
-            entity_probs = None
-        if entity_probs:
-            label = max(entity_probs,
-                        key=lambda key: entity_probs[key])
-            if self.component_config["BILOU_flag"]:
-                # if we are using bilou flags, we will combine the prob
-                # of the B, I, L and U tags for an entity (so if we have a
-                # score of 60% for `B-address` and 40% and 30%
-                # for `I-address`, we will return 70%)
-                return label, sum([v
-                                   for k, v in entity_probs.items()
-                                   if k[2:] == label[2:]])
-            else:
-                return label, entity_probs[label]
-        else:
-            return "", 0.0
-
-
-
-    # @staticmethod
-    # def extract_entities(doc: 'Doc') -> List[Dict[Text, Any]]:
-    #     entities = [
-    #         {
-    #             "entity": ent.label_,
-    #             "value": ent.text,
-    #             "start": ent.start_char,
-    #             "confidence": None,
-    #             "end": ent.end_char
-    #         }
-    #         for ent in doc.ents]
-    #     return entities
-
+            return cls(meta)
 

@@ -1,156 +1,140 @@
 {
     "intent_errors": [
         {
-            "text": "나는 영현",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.8601739406585693,
-                "name": "joke"
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "다니엘"
         },
         {
-            "text": "내 이름 박상록 이야",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.5919345021247864,
-                "name": "goodbye"
-            }
+                "name": "joke",
+                "confidence": 0.8466303944587708
+            },
+            "text": "난 설리라고 해"
         },
         {
-            "text": "다니엘",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "건영"
         },
         {
-            "text": "난 설리라고 해",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.7560213208198547,
-                "name": "joke"
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "김건영"
         },
         {
-            "text": "건영",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "전 김사랑"
         },
         {
-            "text": "김건영",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "제임스"
         },
         {
-            "text": "저는 사랑이라고 해요",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.5871783494949341,
-                "name": "blood_type"
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "김동건"
         },
         {
-            "text": "전 김사랑",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
+                "name": "goodbye",
+                "confidence": 0.7574984431266785
+            },
+            "text": "이름은 또띠 라고해"
         },
         {
-            "text": "이름 선홍",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.5057057738304138,
-                "name": "thanks"
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "링컨"
         },
         {
-            "text": "만주가 내 이름이야",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.7478464245796204,
-                "name": "goodbye"
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "현진"
         },
         {
-            "text": "제 이름 현 이에요",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.7556381225585938,
-                "name": "goodbye"
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "최광록"
         },
         {
-            "text": "이름은 평온이라고 해요",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.864659309387207,
-                "name": "goodbye"
-            }
+                "name": "blood_type",
+                "confidence": 0.9789760112762451
+            },
+            "text": "저 O형"
         },
         {
-            "text": "나는 강제임스",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.8601739406585693,
-                "name": "joke"
-            }
+                "name": "blood_type",
+                "confidence": 0.9618755578994751
+            },
+            "text": "나 B형 이다"
         },
         {
-            "text": "제임스",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
+                "name": "goodbye",
+                "confidence": 0.7845796942710876
+            },
+            "text": "오늘은 삼일절"
         },
         {
-            "text": "김동건",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
+                "name": "goodbye",
+                "confidence": 0.78463214635849
+            },
+            "text": "내일은 몇 일이지?"
         },
         {
-            "text": "이름은 또띠 라고해",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.7892065048217773,
-                "name": "goodbye"
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "과자 10달러"
         },
         {
-            "text": "링컨",
             "intent": "intro",
             "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
-        },
-        {
-            "text": "현진",
-            "intent": "intro",
-            "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
-        },
-        {
-            "text": "최광록",
-            "intent": "intro",
-            "intent_prediction": {
-                "confidence": 0.0,
-                "name": ""
-            }
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "주급 7만 파운드"
         }
     ]
 }

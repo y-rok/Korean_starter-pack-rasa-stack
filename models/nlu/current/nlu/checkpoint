@@ -1,2 +1,0 @@
-model_checkpoint_path: "/Users/y-rok/YRok/project/rasa/korean_starter-pack-rasa-stack/models/nlu/current/nlu/intent_classifier_tensorflow_embedding.ckpt"
-all_model_checkpoint_paths: "/Users/y-rok/YRok/project/rasa/korean_starter-pack-rasa-stack/models/nlu/current/nlu/intent_classifier_tensorflow_embedding.ckpt"

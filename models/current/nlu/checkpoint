@@ -1,2 +1,2 @@
-model_checkpoint_path: "/home/gunsu/Desktop/Korean_starter-pack-rasa-stack-master/models/current/nlu/intent_classifier_tensorflow_embedding.ckpt"
-all_model_checkpoint_paths: "/home/gunsu/Desktop/Korean_starter-pack-rasa-stack-master/models/current/nlu/intent_classifier_tensorflow_embedding.ckpt"
+model_checkpoint_path: "/home/gunsu/Korean_starter-pack-rasa-stack/models/current/nlu/intent_classifier_tensorflow_embedding.ckpt"
+all_model_checkpoint_paths: "/home/gunsu/Korean_starter-pack-rasa-stack/models/current/nlu/intent_classifier_tensorflow_embedding.ckpt"

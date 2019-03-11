@@ -1,13 +1,7 @@
 {
-  "policy_names": [
-    "rasa_core.policies.keras_policy.KerasPolicy",
-    "rasa_core.policies.memoization.MemoizationPolicy",
-    "rasa_core.policies.fallback.FallbackPolicy"
-  ],
   "python": "3.5.2",
-  "trained_at": "20190304-100909",
   "action_fingerprints": {
-    "utter_blood_type_confirm": {
+    "utter_detect_complete": {
       "slots": []
     },
     "action_listen": {
@@ -16,18 +10,24 @@
         "PS"
       ]
     },
-    "utter_name": {
+    "utter_blood_type_confirm": {
       "slots": []
     },
-    "utter_thanks": {
+    "utter_name": {
       "slots": []
     },
     "utter_greet": {
       "slots": []
     }
   },
-  "rasa_core": "0.12.3",
+  "trained_at": "20190308-143041",
+  "policy_names": [
+    "rasa_core.policies.keras_policy.KerasPolicy",
+    "rasa_core.policies.memoization.MemoizationPolicy",
+    "rasa_core.policies.fallback.FallbackPolicy"
+  ],
   "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
+  "rasa_core": "0.12.3",
   "max_histories": [
     3,
     3,

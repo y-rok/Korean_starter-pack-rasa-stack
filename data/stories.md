@@ -11,11 +11,20 @@
  - utter_blood_type
 * blood_type
  - utter_blood_type_confirm
-
-## story_thanks
-* thanks
- - utter_thanks
  
 ## story_name
 * intro{"PS":"슬기"}
  - utter_greet
+ 
+## story_email
+* detect_EMAIL
+ - utter_detect_complete
+ 
+## story_url
+ * detect_EMAIL
+ - utter_detect_complete
+ 
+## story_Tic_Tok
+ * Tic_Tok
+ - utter_detect_complete
+ 

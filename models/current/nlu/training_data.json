@@ -1,92 +1,214 @@
 {
   "rasa_nlu_data": {
-    "regex_features": [
-      {
-        "name": " PS",
-        "pattern": "(.*\\w+.)(?=입니다|야|에요|요|입)"
-      }
-    ],
     "entity_synonyms": [],
     "lookup_tables": [
       {
-        "name": "PS",
-        "elements": "data/name.txt"
+        "elements": "data/name.txt",
+        "name": "PS"
       }
     ],
     "common_examples": [
       {
         "intent": "intro",
-        "text": "제 이름은 동현 PS 입니다"
+        "text": "제 이름은 동현 입니다",
+        "entities": [
+          {
+            "start": 6,
+            "end": 8,
+            "entity": "PS",
+            "value": "동현"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "철수 입니다"
+        "text": "철수 입니다",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "entity": "PS",
+            "value": "철수"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "나는 영록 PS"
+        "text": "나는 영록",
+        "entities": [
+          {
+            "start": 3,
+            "end": 5,
+            "entity": "PS",
+            "value": "영록"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "영희 PS 에요"
+        "text": "영희 에요",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "entity": "PS",
+            "value": "영희"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "저는 민호 PS 입니다"
+        "text": "저는 민호 입니다",
+        "entities": [
+          {
+            "start": 3,
+            "end": 5,
+            "entity": "PS",
+            "value": "민호"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "내 이름은 지홍 PS 야"
+        "text": "내 이름은 지홍 야",
+        "entities": [
+          {
+            "start": 6,
+            "end": 8,
+            "entity": "PS",
+            "value": "지홍"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "저는 재민 PS 에요"
+        "text": "저는 재민 에요",
+        "entities": [
+          {
+            "start": 3,
+            "end": 5,
+            "entity": "PS",
+            "value": "재민"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "난 민철 PS"
+        "text": "난 민철",
+        "entities": [
+          {
+            "start": 2,
+            "end": 4,
+            "entity": "PS",
+            "value": "민철"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "나 종호 PS"
+        "text": "나 종호",
+        "entities": [
+          {
+            "start": 2,
+            "end": 4,
+            "entity": "PS",
+            "value": "종호"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "저는 슬기 PS"
+        "text": "저는 슬기",
+        "entities": [
+          {
+            "start": 3,
+            "end": 5,
+            "entity": "PS",
+            "value": "슬기"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "이름 재훈 PS"
+        "text": "이름 재훈",
+        "entities": [
+          {
+            "start": 3,
+            "end": 5,
+            "entity": "PS",
+            "value": "재훈"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "민수 PS"
+        "text": "민수",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "entity": "PS",
+            "value": "민수"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "경식 PS"
+        "text": "경식",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "entity": "PS",
+            "value": "경식"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "주형 PS"
+        "text": "주형",
+        "entities": [
+          {
+            "start": 0,
+            "end": 2,
+            "entity": "PS",
+            "value": "주형"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "박서용 PS"
+        "text": "박서용",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "entity": "PS",
+            "value": "박서용"
+          }
+        ]
       },
       {
         "intent": "intro",
-        "text": "김재석 PS"
+        "text": "김재석",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "entity": "PS",
+            "value": "김재석"
+          }
+        ]
       },
       {
         "intent": "blood_type",
         "text": "제 혈액형은 A형 입니다",
         "entities": [
           {
-            "value": "A형",
-            "entity": "type",
             "start": 7,
-            "end": 9
+            "end": 9,
+            "entity": "type",
+            "value": "A형"
           }
         ]
       },
@@ -95,10 +217,10 @@
         "text": "저는 O형",
         "entities": [
           {
-            "value": "O형",
-            "entity": "type",
             "start": 3,
-            "end": 5
+            "end": 5,
+            "entity": "type",
+            "value": "O형"
           }
         ]
       },
@@ -107,10 +229,10 @@
         "text": "나는 B형 이다",
         "entities": [
           {
-            "value": "B형",
-            "entity": "type",
             "start": 3,
-            "end": 5
+            "end": 5,
+            "entity": "type",
+            "value": "B형"
           }
         ]
       },
@@ -119,10 +241,10 @@
         "text": "내 혈액형 AB형",
         "entities": [
           {
-            "value": "AB형",
-            "entity": "type",
             "start": 6,
-            "end": 9
+            "end": 9,
+            "entity": "type",
+            "value": "AB형"
           }
         ]
       },
@@ -131,10 +253,10 @@
         "text": "O형",
         "entities": [
           {
-            "value": "O형",
-            "entity": "type",
             "start": 0,
-            "end": 2
+            "end": 2,
+            "entity": "type",
+            "value": "O형"
           }
         ]
       },
@@ -143,10 +265,10 @@
         "text": "A형",
         "entities": [
           {
-            "value": "A형",
-            "entity": "type",
             "start": 0,
-            "end": 2
+            "end": 2,
+            "entity": "type",
+            "value": "A형"
           }
         ]
       },
@@ -155,10 +277,10 @@
         "text": "B형",
         "entities": [
           {
-            "value": "B형",
-            "entity": "type",
             "start": 0,
-            "end": 2
+            "end": 2,
+            "entity": "type",
+            "value": "B형"
           }
         ]
       },
@@ -167,10 +289,70 @@
         "text": "AB형",
         "entities": [
           {
-            "value": "AB형",
-            "entity": "type",
             "start": 0,
-            "end": 3
+            "end": 3,
+            "entity": "type",
+            "value": "AB형"
+          }
+        ]
+      },
+      {
+        "intent": "dectect_URL",
+        "text": "링크 여기 www.google.com",
+        "entities": [
+          {
+            "start": 6,
+            "end": 20,
+            "entity": "url",
+            "value": "www.google.com"
+          }
+        ]
+      },
+      {
+        "intent": "dectect_URL",
+        "text": "사이트 www.cam.ac.uk",
+        "entities": [
+          {
+            "start": 4,
+            "end": 17,
+            "entity": "url",
+            "value": "www.cam.ac.uk"
+          }
+        ]
+      },
+      {
+        "intent": "Tic_Tok",
+        "text": "10분 있다 보자",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "entity": "TI",
+            "value": "10분"
+          }
+        ]
+      },
+      {
+        "intent": "Tic_Tok",
+        "text": "2시간",
+        "entities": [
+          {
+            "start": 0,
+            "end": 3,
+            "entity": "TI",
+            "value": "2시간"
+          }
+        ]
+      },
+      {
+        "intent": "Tic_Tok",
+        "text": "5분 31초",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "entity": "TI",
+            "value": "5분 31초"
           }
         ]
       },
@@ -381,6 +563,12 @@
       {
         "intent": "joke",
         "text": "웃긴 얘기 좀"
+      }
+    ],
+    "regex_features": [
+      {
+        "pattern": "(.*\\w+.)(?=입니다|야|에요|요|입)",
+        "name": " PS"
       }
     ]
   }

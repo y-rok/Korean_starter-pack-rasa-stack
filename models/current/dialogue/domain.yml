@@ -9,35 +9,60 @@ actions:
 - utter_fallback
 - utter_blood_type
 - utter_blood_type_confirm
+- utter_detect_complete
 config:
   store_entities_as_slots: true
 entities:
 - PS
 - type
+- url
+- time
+- TI
+- email
 forms: []
 intents:
-- intro:
-    use_entities: true
-- deny:
-    use_entities: true
 - greet:
-    use_entities: true
-- goodbye:
-    use_entities: true
-- blood_type:
-    use_entities: true
-- joke:
     use_entities: true
 - name:
     use_entities: true
+- goodbye:
+    use_entities: true
+- detect_URL:
+    use_entities: true
+- intro:
+    use_entities: true
+- blood_type:
+    use_entities: true
 - thanks:
+    use_entities: true
+- Tic_Tok:
+    use_entities: true
+- joke:
+    use_entities: true
+- deny:
     use_entities: true
 slots:
   PS:
     auto_fill: true
     initial_value: null
-    type: rasa_core.slots.TextSlot
+    type: rasa_core.slots.UnfeaturizedSlot
+  TI:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  email:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  time:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
   type:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  url:
     auto_fill: true
     initial_value: null
     type: rasa_core.slots.UnfeaturizedSlot
@@ -46,6 +71,8 @@ templates:
   - text: 혈액형이 뭐에요?
   utter_blood_type_confirm:
   - text: 당신 혈액형 {type} 맞나요?
+  utter_detect_complete:
+  - text: email & url 확인
   utter_fallback:
   - text: 무슨 뜻인지 모르겠어요...ㅠㅠ
   utter_goodbye:

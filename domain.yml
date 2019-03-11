@@ -7,15 +7,29 @@ intents:
 - name
 - intro
 - blood_type
+- detect_URL
+- Tic_Tok
 
 entities:
 - PS
 - type
+- url
+- time
+- TI
+- email
 
 slots:
   PS:
-    type: text
+    type: unfeaturized
+  TI:
+    type: unfeaturized
   type:
+    type: unfeaturized
+  url:
+    type: unfeaturized
+  time:
+    type: unfeaturized
+  email:
     type: unfeaturized
 
 actions:
@@ -27,6 +41,7 @@ actions:
 - utter_fallback
 - utter_blood_type
 - utter_blood_type_confirm
+- utter_detect_complete
 
 templates:
   utter_name:
@@ -56,3 +71,6 @@ templates:
 
   utter_blood_type_confirm:
   - text: "당신 혈액형 {type} 맞나요?"
+
+  utter_detect_complete:
+  - text: "email & url 확인"
