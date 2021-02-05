@@ -1,13 +1,21 @@
 {
   "states": [
+    "intent_Tic_Tok",
+    "intent_blood_type",
     "intent_deny",
+    "intent_detect_URL",
     "intent_goodbye",
     "intent_greet",
+    "intent_intro",
     "intent_joke",
     "intent_name",
     "intent_thanks",
-    "entity_name",
-    "slot_name_0",
+    "entity_PS",
+    "entity_type",
+    "entity_url",
+    "entity_time",
+    "entity_TI",
+    "entity_email",
     "prev_action_listen",
     "prev_action_restart",
     "prev_action_default_fallback",
@@ -17,6 +25,9 @@
     "prev_utter_greet",
     "prev_utter_goodbye",
     "prev_utter_joke",
-    "prev_utter_fallback"
+    "prev_utter_fallback",
+    "prev_utter_blood_type",
+    "prev_utter_blood_type_confirm",
+    "prev_utter_detect_complete"
   ]
 }

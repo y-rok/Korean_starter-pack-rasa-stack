@@ -1,38 +1,36 @@
 {
+  "python": "3.5.2",
   "action_fingerprints": {
-    "action_listen": {
-      "slots": [
-        "name"
-      ]
-    },
-    "utter_greet": {
+    "utter_detect_complete": {
       "slots": []
     },
-    "utter_goodbye": {
+    "action_listen": {
+      "slots": [
+        "type",
+        "PS"
+      ]
+    },
+    "utter_blood_type_confirm": {
       "slots": []
     },
     "utter_name": {
       "slots": []
     },
-    "utter_joke": {
-      "slots": []
-    },
-    "utter_thanks": {
+    "utter_greet": {
       "slots": []
     }
   },
-  "rasa_core": "0.12.3",
-  "python": "3.6.7",
-  "max_histories": [
-    3,
-    3,
-    null
-  ],
-  "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
+  "trained_at": "20190308-143041",
   "policy_names": [
     "rasa_core.policies.keras_policy.KerasPolicy",
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.fallback.FallbackPolicy"
   ],
-  "trained_at": "20190206-205353"
+  "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
+  "rasa_core": "0.12.3",
+  "max_histories": [
+    3,
+    3,
+    null
+  ]
 }

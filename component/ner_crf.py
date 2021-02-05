@@ -2,12 +2,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
-
 import logging
 import os
-
 from konlpy.tag import Mecab
-
+import eli5
 import typing
 from builtins import str
 from typing import Any, Dict, List, Optional, Text, Tuple
@@ -28,13 +26,19 @@ logger = logging.getLogger(__name__)
 if typing.TYPE_CHECKING:
     import sklearn_crfsuite
 
+# CRF_MODEL_FILE_NAME = "pre_trained_crf_model.pkl"
+
+# CRF_MODEL_FILE_NAME = "pre_trained_crf_model_BILOU.pkl"
 CRF_MODEL_FILE_NAME = "crf_model.pkl"
+
+mecab = Mecab()
 
 
 class KoreanExtractor(EntityExtractor):
     name = "component.KoreanExtractor"
 
     provides = ["entities"]
+
     requires = ["tokens"]
 
     defaults = {
@@ -50,10 +54,10 @@ class KoreanExtractor(EntityExtractor):
         # "is the preceding word in title case?"
         # POS features require spaCy to be installed
         "features": [
-            ["low", "title", "length"],
-            ["bias", "low", "prefix5", "prefix2", "suffix5", "suffix3",
-             "suffix2", "length", "title", "digit", "pattern", "pos", "pattern"],
-            ["low", "title", "length"]],
+            ["low", "length", "kor_pos", "kor_pos_2", "prefix1"],
+            ["kor_pos", "kor_pos_2", "length", "bias", "low", "prefix1", "suffix1", "digit", "pattern"],
+            ["low", "length", "kor_pos", "kor_pos_2", "prefix1"]
+        ],
 
         # The maximum number of iterations for optimization algorithms.
         "max_iterations": 50,
@@ -67,20 +71,20 @@ class KoreanExtractor(EntityExtractor):
 
     function_dict = {
         'low': lambda doc: doc[0].lower(),
-        'title': lambda doc: doc[0].istitle(),
-        'prefix5': lambda doc: doc[0][:5],
+        'prefix1': lambda doc: doc[0][:1],
         'prefix2': lambda doc: doc[0][:2],
-        'suffix5': lambda doc: doc[0][-5:],
+        'prefix3': lambda doc: doc[0][:3],
         'suffix3': lambda doc: doc[0][-3:],
         'suffix2': lambda doc: doc[0][-2:],
         'suffix1': lambda doc: doc[0][-1:],
-        'pos': lambda doc: Mecab().pos(doc[0])[0][1],
-        # 'pos2': lambda doc: doc[1][:2],
+        #'pos': lambda doc: doc[1],
+        #'pos2': lambda doc: doc[1][:2],
         'bias': lambda doc: 'bias',
-        'upper': lambda doc: doc[0].isupper(),
-        'digit': lambda doc: doc[0].isdigit(),
-        'pattern': lambda doc: doc[2],
         'length': lambda doc: len(doc[0]),
+        'kor_pos': lambda doc: mecab.pos(doc[0])[0][1],
+        'kor_pos_2': lambda doc: mecab.pos(doc[0])[0][1][:2],
+        'digit': lambda doc: doc[0].isdigit(),
+        'pattern': lambda doc: doc[3],
     }
 
     def __init__(self, component_config=None, ent_tagger=None):
@@ -92,17 +96,17 @@ class KoreanExtractor(EntityExtractor):
 
         self._validate_configuration()
 
-        # self.mecab = Mecab()
+        self._check_pos_features_and_spacy()
 
-    #     self._check_pos_features_and_spacy()
-    #
-    # def _check_pos_features_and_spacy(self):
-    #     import itertools
-    #     features = self.component_config.get("features", [])
-    #     fts = set(itertools.chain.from_iterable(features))
-    #     self.pos_features = ('pos' in fts or 'pos2' in fts)
-    #     if self.pos_features:
-    #         self._check_spacy()
+        self.mecab = Mecab()
+
+    def _check_pos_features_and_spacy(self):
+        import itertools
+        features = self.component_config.get("features", [])
+        fts = set(itertools.chain.from_iterable(features))
+        self.pos_features = ('pos' in fts or 'pos2' in fts)
+        # if self.pos_features:
+        #     self._check_spacy()
 
     # @staticmethod
     # def _check_spacy():
@@ -111,7 +115,7 @@ class KoreanExtractor(EntityExtractor):
     #             'Failed to import `spaCy`. '
     #             '`spaCy` is required for POS features '
     #             'See https://spacy.io/usage/ for installation'
-    #             'instructions.')
+    #              'instructions.')
 
     def _validate_configuration(self):
         if len(self.component_config.get("features", [])) % 2 != 1:
@@ -131,19 +135,19 @@ class KoreanExtractor(EntityExtractor):
 
         # checks whether there is at least one
         # example with an entity annotation
-        # if training_data.entity_examples:
-        #     self._check_spacy_doc(training_data.training_examples[0])
-        #
-        #     # filter out pre-trained entity examples
-        #     filtered_entity_examples = self.filter_trainable_entities(
-        #             training_data.training_examples)
-        #
-        #     # convert the dataset into features
-        #     # this will train on ALL examples, even the ones
-        #     # without annotations
-        #     dataset = self._create_dataset(filtered_entity_examples)
-        #
-        #     self._train_model(dataset)
+        if training_data.entity_examples:
+            self._check_spacy_doc(training_data.training_examples[0])
+
+            # filter out pre-trained entity examples
+            filtered_entity_examples = self.filter_trainable_entities(
+                    training_data.training_examples)
+
+            # convert the dataset into features
+            # this will train on ALL examples, even the ones
+            # without annotations
+            dataset = self._create_dataset(filtered_entity_examples)
+
+            self._train_model(dataset)
 
     def _create_dataset(self, examples):
         # type: (List[Message]) -> List[List[Tuple[Text, Text, Text, Text]]]
@@ -153,20 +157,20 @@ class KoreanExtractor(EntityExtractor):
             dataset.append(self._from_json_to_crf(example, entity_offsets))
         return dataset
 
-    # def _check_spacy_doc(self, message):
-    #     if self.pos_features and message.get("spacy_doc") is None:
-    #         raise InvalidConfigError(
-    #             'Could not find `spacy_doc` attribute for '
-    #             'message {}\n'
-    #             'POS features require a pipeline component '
-    #             'that provides `spacy_doc` attributes, i.e. `nlp_spacy`. '
-    #             'See https://nlu.rasa.com/pipeline.html#nlp-spacy '
-    #             'for details'.format(message.text))
+    def _check_spacy_doc(self, message):
+        if self.pos_features and message.get("spacy_doc") is None:
+            raise InvalidConfigError(
+                'Could not find `spacy_doc` attribute for '
+                'message {}\n'
+                'POS features require a pipeline component '
+                'that provides `spacy_doc` attributes, i.e. `nlp_spacy`. '
+                'See https://nlu.rasa.com/pipeline.html#nlp-spacy '
+                'for details'.format(message.text))
 
     def process(self, message, **kwargs):
         # type: (Message, **Any) -> None
 
-        # self._check_spacy_doc(message)
+        self._check_spacy_doc(message)
 
         extracted = self.add_extractor_name(self.extract_entities(message))
         message.set("entities", message.get("entities", []) + extracted,
@@ -215,14 +219,14 @@ class KoreanExtractor(EntityExtractor):
             return "", 0.0
 
     def _create_entity_dict(self, tokens, start, end, entity, confidence):
-        # if self.pos_features:
-        #     _start = tokens[start].idx
-        #     _end = tokens[start:end + 1].end_char
-        #     value = tokens[start:end + 1].text
-        # else:
-        _start = tokens[start].offset
-        _end = tokens[end].end
-        value = ' '.join(t.text for t in tokens[start:end + 1])
+        if self.pos_features:
+            _start = tokens[start].idx
+            _end = tokens[start:end + 1].end_char
+            value = tokens[start:end + 1].text
+        else:
+            _start = tokens[start].offset
+            _end = tokens[end].end
+            value = ' '.join(t.text for t in tokens[start:end + 1])
 
         return {
             'start': _start,
@@ -297,10 +301,10 @@ class KoreanExtractor(EntityExtractor):
     def _from_crf_to_json(self, message, entities):
         # type: (Message, List[Any]) -> List[Dict[Text, Any]]
 
-        # if self.pos_features:
-        #     tokens = message.get("spacy_doc")
-        # else:
-        tokens = message.get("tokens")
+        if self.pos_features:
+            tokens = message.get("spacy_doc")
+        else:
+            tokens = message.get("tokens")
 
         if len(tokens) != len(entities):
             raise Exception('Inconsistency in amount of tokens '
@@ -370,9 +374,11 @@ class KoreanExtractor(EntityExtractor):
         meta = model_metadata.for_component(cls.name)
         file_name = meta.get("classifier_file", CRF_MODEL_FILE_NAME)
         model_file = os.path.join(model_dir, file_name)
+        print(meta)
 
         if os.path.exists(model_file):
             ent_tagger = joblib.load(model_file)
+            print(ent_tagger)
             return cls(meta, ent_tagger)
         else:
             return cls(meta)
@@ -449,9 +455,9 @@ class KoreanExtractor(EntityExtractor):
         if self.pos_features:
             from spacy.gold import GoldParse
 
-            doc = message.get("spacy_doc")
-            gold = GoldParse(doc, entities=entity_offsets)
-            ents = [l[5] for l in gold.orig_annot]
+            #doc = message.get("spacy_doc")
+            #gold = GoldParse(doc, entities=entity_offsets)
+            #ents = [l[5] for l in gold.orig_annot]
         else:
             tokens = message.get("tokens")
             ents = self._bilou_tags_from_offsets(tokens, entity_offsets)
@@ -512,7 +518,7 @@ class KoreanExtractor(EntityExtractor):
             return {}
 
     # @staticmethod
-    # def __tag_of_token(token):
+    # # def __tag_of_token(token):
     #     if spacy.about.__version__ > "2" and token._.has("tag"):
     #         return token._.get("tag")
     #     else:
@@ -523,15 +529,17 @@ class KoreanExtractor(EntityExtractor):
         """Takes a sentence and switches it to crfsuite format."""
 
         crf_format = []
-        # if self.pos_features:
-        #     tokens = message.get("spacy_doc")
-        # # else:
-        tokens = message.get("tokens")
+        if self.pos_features:
+            tokens = message.get("spacy_doc")
+        else:
+            tokens = message.get("tokens")
         for i, token in enumerate(tokens):
             pattern = self.__pattern_of_token(message, i)
             entity = entities[i] if entities else "N/A"
-            # tag = self.__tag_of_token(token) # if self.pos_features else None
-            crf_format.append((token.text, entity, pattern))
+            """korean_pos_tagging"""
+            tag = mecab.pos(token.text)[0][1]
+            # tag = self.__tag_of_token(token) if self.pos_features else None
+            crf_format.append((token.text, tag, entity, pattern))
         return crf_format
 
     def _train_model(self, df_train):
@@ -553,3 +561,18 @@ class KoreanExtractor(EntityExtractor):
                 all_possible_transitions=True
         )
         self.ent_tagger.fit(X_train, y_train)
+
+        result = eli5.explain_weights(self.ent_tagger, top=10, target_names='name')
+        plt = str(result.targets[1])
+        #plt = plt.split("FeatureWeight")
+        print(len(plt))
+        print(plt)
+        for i in range(len(plt)):
+            weight_dict = []
+            if "feature" in plt[i]:
+                element = plt[i].split(',')
+                weight_dict.append(element[0].replace('(',""))
+                weight_dict.append(element[1])
+
+        print(weight_dict)
+

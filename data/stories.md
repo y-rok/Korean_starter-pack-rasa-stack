@@ -2,31 +2,29 @@
 * greet 
  - utter_name 
  
-## story_goodbye
-* goodbye
- - utter_goodbye
-
-## story_thanks
-* thanks
- - utter_thanks
+## story_blood_type
+* blood_type{"type":"AB형"}
+ - utter_blood_type_confirm
+ 
+## story_blood_type_ask
+* greet
+ - utter_blood_type
+* blood_type
+ - utter_blood_type_confirm
  
 ## story_name
-* name{"name":"슬기"}
+* intro{"PS":"슬기"}
  - utter_greet
  
-
-## story_joke_01
-* joke
- - utter_joke
+## story_email
+* detect_EMAIL
+ - utter_detect_complete
  
-## story_joke_02
-* greet
- - utter_name
-* name{"name":"민호"} 
- - utter_greet
-* joke
- - utter_joke
-* thanks
- - utter_thanks
-* goodbye
- - utter_goodbye 
+## story_url
+ * detect_EMAIL
+ - utter_detect_complete
+ 
+## story_Tic_Tok
+ * Tic_Tok
+ - utter_detect_complete
+ 

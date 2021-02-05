@@ -1,3 +1,49 @@
+## intent:intro
+- 제 이름은 [동현](PS) 입니다
+- [철수](PS) 입니다
+- 나는 [영록](PS)
+- [영희](PS) 에요 
+- 저는 [민호](PS) 입니다
+- 내 이름은 [지홍](PS) 야
+- 저는 [재민](PS) 에요
+- 난 [민철](PS) 
+- 나 [종호](PS)
+- 저는 [슬기](PS)
+- 이름 [재훈](PS)
+- [민수](PS)
+- [경식](PS)
+- [주형](PS)
+- [박서용](PS)
+- [김재석](PS)
+
+## regex: PS
+- (.*\w+.)(?=입니다|야|에요|요|입)
+
+## lookup:PS
+   data/name.txt
+
+
+## intent: blood_type
+
+- 제 혈액형은 [A형](type) 입니다
+- 저는 [O형](type) 
+- 나는 [B형](type) 이다
+- 내 혈액형 [AB형](type)
+- [O형](type)
+- [A형](type)
+- [B형](type)
+- [AB형](type) 
+
+
+## intent: dectect_URL
+- 링크 여기 [www.google.com](url)
+- 사이트 [www.cam.ac.uk](url)
+
+## intent: Tic_Tok
+- [10분](TI) 있다 보자
+- [2시간](TI)
+- [5분 31초](TI)
+
 ## intent:goodbye 
 - 나중에 또 얘기햌ㅋㅋ
 - 잘가
@@ -44,21 +90,6 @@
 - 고맙
 - 고마웠어
 
-## intent:name
-- [철수](name) 입니다
-- 나는 [영록](name)
-- [영희](name) 에요 
-- 저는 [민호](name) 입니다
-- 내 이름은 [지홍](name) 야
-- 제 이름은 [동현](name) 입니다
-- 저는 [재민](name) 에요
-- 난 [민철](name)
-- 나 [종호](name)
-- 저 [슬기](name)
-- 이름 [재훈](name)
-- [민수](name)
-- [김재석](name)
-
 ## intent:joke
 - 재밌는 얘기 좀 해줘
 - 재밌는 거 알려줘
@@ -72,4 +103,5 @@
 - 뭐 재밌는 거 있어?
 - 나 좀 웃겨줘
 - 웃긴 얘기 좀
+
 

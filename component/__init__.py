@@ -1,2 +1,4 @@
 from .korean_tokenizer import KoreanTokenizer
-from .korean_ner_crf import KoreanExtractor
+from .ner_crf import KoreanExtractor
+from .pre_trained_crf import PreTrainedCRF
+

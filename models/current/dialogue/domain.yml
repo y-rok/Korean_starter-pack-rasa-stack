@@ -7,36 +7,78 @@ actions:
 - utter_goodbye
 - utter_joke
 - utter_fallback
+- utter_blood_type
+- utter_blood_type_confirm
+- utter_detect_complete
 config:
   store_entities_as_slots: true
 entities:
-- name
+- PS
+- type
+- url
+- time
+- TI
+- email
 forms: []
 intents:
 - greet:
     use_entities: true
+- name:
+    use_entities: true
 - goodbye:
+    use_entities: true
+- detect_URL:
+    use_entities: true
+- intro:
+    use_entities: true
+- blood_type:
     use_entities: true
 - thanks:
     use_entities: true
-- deny:
+- Tic_Tok:
     use_entities: true
 - joke:
     use_entities: true
-- name:
+- deny:
     use_entities: true
 slots:
-  name:
+  PS:
     auto_fill: true
     initial_value: null
-    type: rasa_core.slots.TextSlot
+    type: rasa_core.slots.UnfeaturizedSlot
+  TI:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  email:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  time:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  type:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  url:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
 templates:
+  utter_blood_type:
+  - text: 혈액형이 뭐에요?
+  utter_blood_type_confirm:
+  - text: 당신 혈액형 {type} 맞나요?
+  utter_detect_complete:
+  - text: email & url 확인
   utter_fallback:
   - text: 무슨 뜻인지 모르겠어요...ㅠㅠ
   utter_goodbye:
   - text: 다음에 또 얘기해요~!
   utter_greet:
-  - text: '{name}님 반갑습니다. 무슨일이세요?'
+  - text: '{PS}님 반갑습니다. 무슨일이세요?'
   utter_joke:
   - text: 설탕이 깜짝 놀라면!!! 이럴 슈가~~~
   - text: 아마존에 사람이 누굴까요? 아마... John?

@@ -1,92 +1,140 @@
 {
     "intent_errors": [
         {
-            "text": "잘가",
-            "intent": "goodbye",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "다니엘"
         },
         {
-            "text": "끝",
-            "intent": "goodbye",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
-            }
+                "name": "joke",
+                "confidence": 0.8466303944587708
+            },
+            "text": "난 설리라고 해"
         },
         {
-            "text": "ㅂㅂ",
-            "intent": "goodbye",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "건영"
         },
         {
-            "text": "또 왔어",
-            "intent": "greet",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "김건영"
         },
         {
-            "text": "ㅎㅇ",
-            "intent": "greet",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "전 김사랑"
         },
         {
-            "text": "ㄱㅅ",
-            "intent": "thanks",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "제임스"
         },
         {
-            "text": "좋아",
-            "intent": "thanks",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "김동건"
         },
         {
-            "text": "굿",
-            "intent": "thanks",
+            "intent": "intro",
             "intent_prediction": {
-                "name": "",
-                "confidence": 0.0
-            }
+                "name": "goodbye",
+                "confidence": 0.7574984431266785
+            },
+            "text": "이름은 또띠 라고해"
         },
         {
-            "text": "난 민철",
-            "intent": "name",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "링컨"
         },
         {
-            "text": "나 종호",
-            "intent": "name",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "현진"
         },
         {
-            "text": "민수",
-            "intent": "name",
+            "intent": "intro",
             "intent_prediction": {
                 "name": "",
                 "confidence": 0.0
-            }
+            },
+            "text": "최광록"
+        },
+        {
+            "intent": "intro",
+            "intent_prediction": {
+                "name": "blood_type",
+                "confidence": 0.9789760112762451
+            },
+            "text": "저 O형"
+        },
+        {
+            "intent": "intro",
+            "intent_prediction": {
+                "name": "blood_type",
+                "confidence": 0.9618755578994751
+            },
+            "text": "나 B형 이다"
+        },
+        {
+            "intent": "intro",
+            "intent_prediction": {
+                "name": "goodbye",
+                "confidence": 0.7845796942710876
+            },
+            "text": "오늘은 삼일절"
+        },
+        {
+            "intent": "intro",
+            "intent_prediction": {
+                "name": "goodbye",
+                "confidence": 0.78463214635849
+            },
+            "text": "내일은 몇 일이지?"
+        },
+        {
+            "intent": "intro",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "과자 10달러"
+        },
+        {
+            "intent": "intro",
+            "intent_prediction": {
+                "name": "",
+                "confidence": 0.0
+            },
+            "text": "주급 7만 파운드"
         }
     ]
 }

@@ -6,8 +6,15 @@ pipeline:
 #  "norm": false
 #  "stem": false
 #- name: "ner_crf"
+- name: "ner_duckling_http"
+  url: "http://0.0.0.0:8000"
+  dimensions: ["phone-number", "url", "email", "time"]
+  locale: "ko_KO"
+  timezone: "Asia/Seoul"
 - name: "component.KoreanExtractor"
+- name: "component.PreTrainedCRF"
 - name: "ner_synonyms"
 - name: "intent_featurizer_count_vectors"
   "token_pattern": '(?u)\b\w+\b' # 1개의 character도 인식하도록 regex 변경
 - name: "intent_classifier_tensorflow_embedding"
+- name: "intent_entity_featurizer_regex"
